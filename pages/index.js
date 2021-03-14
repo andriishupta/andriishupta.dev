@@ -1,10 +1,12 @@
-import Head from 'next/head'
-import {Box, Container, CssBaseline, Typography} from '@material-ui/core'
-import Countdown from 'react-countdown';
+import Head from 'next/head';
 import {useCallback} from 'react';
+import Countdown from 'react-countdown';
+import dayjs from 'dayjs';
+
+import {Box, Container, CssBaseline, Typography} from '@material-ui/core'
 
 export default function Home() {
-  const countdownDate = new Date('2021-04-01').toISOString();
+  const countdownDate = dayjs('2021-04-01');
 
   const getCaption = useCallback((number, format) => `${number} ${number === 1 ? format : format + 's'}`, []);
 
