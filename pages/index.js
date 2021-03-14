@@ -1,7 +1,21 @@
 import Head from 'next/head'
-import { CssBaseline } from '@material-ui/core'
+import {Box, Container, CssBaseline, Typography} from '@material-ui/core'
+import Countdown from 'react-countdown';
+import {useCallback} from 'react';
+
+const countdownDate = new Date('2021-04-01T00:00:00.000+00:00');
+const getCaption = (number, format) => `${number} ${number === 1 ? format : format + 's'}`;
 
 export default function Home() {
+  const renderCountdown = useCallback(
+    ({days, hours, minutes, seconds}) => (
+      <Typography variant="body1">
+        {getCaption(days, 'day')} {getCaption(hours, 'hour')} {getCaption(minutes, 'minute')} {getCaption(seconds, 'second')} left.
+      </Typography>
+    ),
+    []
+  );
+
   return (
     <>
       <CssBaseline/>
@@ -16,12 +30,18 @@ export default function Home() {
       </Head>
 
       <main>
-        Main
+        <Container maxWidth="lg">
+          <Box display="flex" flexDirection="column" alignItems="center" justifyContent="center" height="100vh">
+            <Typography variant="h1">Andrii Shupta: DEV</Typography>
+            <Typography variant="h2">coming soon...</Typography>
+            <Countdown date={countdownDate} renderer={renderCountdown}/>
+          </Box>
+        </Container>
       </main>
 
-      <footer>
-        Footer
-      </footer>
+      {/*<footer>*/}
+      {/*  Footer*/}
+      {/*</footer>*/}
     </>
   )
 }
