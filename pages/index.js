@@ -3,10 +3,11 @@ import {Box, Container, CssBaseline, Typography} from '@material-ui/core'
 import Countdown from 'react-countdown';
 import {useCallback} from 'react';
 
-const countdownDate = new Date('2021-04-01T00:00:00.000+00:00');
-const getCaption = (number, format) => `${number} ${number === 1 ? format : format + 's'}`;
-
 export default function Home() {
+  const countdownDate = new Date('2021-04-01').toISOString();
+
+  const getCaption = useCallback((number, format) => `${number} ${number === 1 ? format : format + 's'}`, []);
+
   const renderCountdown = useCallback(
     ({days, hours, minutes, seconds}) => (
       <Typography variant="body1">
