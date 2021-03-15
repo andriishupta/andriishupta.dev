@@ -1,19 +1,18 @@
-import Head from 'next/head';
-import {useCallback} from 'react';
+import { useCallback } from 'react';
 import Countdown from 'react-countdown';
 import dayjs from 'dayjs';
 
-import {Box, Container, CssBaseline, Typography} from '@material-ui/core'
+import { Box, Container, Typography } from '@material-ui/core'
 
 export default function Home() {
   const countdownDate = dayjs('2021-04-01');
 
-  const getCaption = useCallback((number, format) => `${number} ${number === 1 ? format : format + 's'}`, []);
+  const getCaption = useCallback((number, format) => `${ number } ${ number === 1 ? format : format + 's' }`, []);
 
   const renderCountdown = useCallback(
-    ({days, hours, minutes, seconds}) => (
+    ({ days, hours, minutes, seconds }) => (
       <Typography variant="body1">
-        {getCaption(days, 'day')} {getCaption(hours, 'hour')} {getCaption(minutes, 'minute')} {getCaption(seconds, 'second')} left.
+        { getCaption(days, 'day') } { getCaption(hours, 'hour') } { getCaption(minutes, 'minute') } { getCaption(seconds, 'second') } left.
       </Typography>
     ),
     []
@@ -21,30 +20,19 @@ export default function Home() {
 
   return (
     <>
-      <CssBaseline/>
-      <Head>
-        <title>Andrii Shupta: DEV</title>
-        <meta
-          name="viewport"
-          content="minimum-scale=1, initial-scale=1, width=device-width"
-        />
-        <link rel="icon" href="/favicon.ico"/>
-        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap"/>
-      </Head>
-
       <main>
         <Container maxWidth="lg">
           <Box display="flex" flexDirection="column" alignItems="center" justifyContent="center" height="100vh">
             <Typography variant="h1">Andrii Shupta: DEV</Typography>
             <Typography variant="h2">coming soon...</Typography>
-            <Countdown date={countdownDate} renderer={renderCountdown}/>
+            <Countdown date={ countdownDate } renderer={ renderCountdown }/>
           </Box>
         </Container>
       </main>
 
-      {/*<footer>*/}
-      {/*  Footer*/}
-      {/*</footer>*/}
+      {/*<footer>*/ }
+      {/*  Footer*/ }
+      {/*</footer>*/ }
     </>
   )
 }
